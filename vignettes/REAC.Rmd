@@ -1,0 +1,97 @@
+---
+title: "REAC - Reaction Time Analytics in Attention Bias Research"
+author: "Tamas Smahajcsik-Szabo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{abvyr - Reaction Time Analytics in Attention Bias Research}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(tidyverse)
+library(REAC)
+
+example1 <- abvyr::example
+example2 <- abvyr::example2
+
+tidied_data <- shaker(example1, grouping = c("year", "subject"), gather = "trial", value = "RT")
+winsorized_data <- winzer(tidied_data, grouping = c("year", "subject"), x = 0.3, y = 0.7, z = 1.5, label = "trial", value = "RT")
+winsorized_data <- shaker(winsorized_data, grouping = c("year", "subject"), gather = "trial", value = "RT")
+```
+### Package Summary Info
+
+The abvyr package provides tools for 
+
+* preparing your data for additional calculations related to **ABV-index** (*Attention Bias Variability*) and 
+
+* data cleaning techniques such as winsorizing your data.
+
+### Functions
+
+#### the shaker() function
+```{r eval = FALSE}
+shaker(example, 
+  grouping = c("year", "subject"), 
+  gather = "trial", 
+  value = "RT")
+```
+
+
+#### the abvyr() function
+```{r eval = FALSE}
+abver(example2, 
+  grouping = c("year", "subject"), 
+  trial = "trial", 
+  bin_width = 3, 
+  value = "RT", 
+  label = "label", 
+  type = c("Incongruent", "Congruent"), 
+  ID = "subject")
+```
+
+#### the winzer() function
+
+```{r eval = FALSE}
+winzer(example, 
+  grouping = c("year", "subject"), 
+  x = 0.25, 
+  y = 0.75, 
+  z = 1.5, 
+  label = "trial", 
+  value = "RT")
+```
+
+## Effect of winzer() on a demo dataset
+
+For details about the demo dataset used for this example, please see *"Example"* data. 
+
+```{r echo=FALSE, fig.height=5, fig.show='hold', fig.width=6, message=FALSE, warning=FALSE}
+ggplot(tidied_data, aes(RT)) +
+  geom_histogram(fill = "cornflowerblue", color = "black", alpha = 1/4) +
+  labs(
+    title = "The original simulated reaction time data",
+    x = "Reaction time (ms)",
+    y = "Frequency (n)"
+  ) +
+  theme(
+    text = element_text(family = "Garamond", size = 10)
+  )
+
+ggplot(winsorized_data, aes(RT)) +
+  geom_histogram(fill = "cornflowerblue", color = "black", alpha = 1/4)+
+  labs(
+    title = "The winsorized simulated reaction time data",
+    x = "Reaction time (ms)",
+    y = "Frequency (n)"
+  )+
+  theme(
+    text = element_text(family = "Garamond", size = 10)
+  )
+
+```

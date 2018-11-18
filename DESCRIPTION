@@ -1,0 +1,15 @@
+Package: REAC
+Type: Package
+Title: A package for calculating Attention Bias Variability
+Version: 0.0.0.9015
+Authors@R: person("Tamas", "Smahajcsik-Szabo", email = "tamas.smahajcsikszabo@outlook.hu", 
+            role = c("aut", "cre"))
+Description: The abvyr package is for any psychometric research aimed at reaction time measurements in the research of attentional processes.
+      The package contains functions for organizing, cleaning, transforming data and calculating the ABV-index.
+Encoding: UTF-8
+LazyData: true
+License: GPL-2
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
+URL: https://github.com/TamasSmahajcsikszabo/REAC
+BugReports: https://github.com/TamasSmahajcsikszabo/REAC/issues
