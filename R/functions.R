@@ -46,7 +46,6 @@ shaker <- function(data, grouping, gather, value, ...){
 #' @param type A  character vector identifying the names of your trial types. First column shall address incongruent trials.
 #' @param ID A  character vector identifying the name of column for subjects.
 #' @param bin_width Single integer value which gives the number of consecutive trials handled in one bin.
-#' @param shaker Logical, by default is FALSE. If TRUE the function reshapes the data as in a separate shaker() function.
 #' @examples
 #' ABV(example2, grouping = c("year", "subject"), trial = "trial", bin_width = 3, value = "RT", label = "label", type = c("Incongruent", "Congruent"), ID = "subject")
 #' @seealso
