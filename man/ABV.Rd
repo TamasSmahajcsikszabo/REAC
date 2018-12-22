@@ -22,8 +22,6 @@ ABV(data, bin_width, ID, trial, grouping, value, label, type)
 \item{label}{A single character vector identifying the column containing trial types.}
 
 \item{type}{A  character vector identifying the names of your trial types. First column shall address incongruent trials.}
-
-\item{shaker}{Logical, by default is FALSE. If TRUE the function reshapes the data as in a separate shaker() function.}
 }
 \description{
 \code{ABV} calculates Attention Bias Variability (ABV) index.

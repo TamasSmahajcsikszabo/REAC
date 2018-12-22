@@ -162,8 +162,8 @@ data <- data %>%
       "upper" = quantile(value, c(y), na.rm=TRUE),
       IQR = z * IQR(value, na.rm=TRUE)) %>%
     mutate(
-      upper = `lower` + IQR,
-      lower = `upper` - IQR
+      upper = `upper` + IQR,
+      lower = `lower` - IQR
     ) %>%
     mutate(
       above_upper = if_else(value > upper, "above", "normal"),
