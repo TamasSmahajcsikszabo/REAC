@@ -4,7 +4,7 @@ author: "Tamas Smahajcsik-Szabo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{abvyr - Reaction Time Analytics in Attention Bias Research}
+  %\VignetteIndexEntry{REAC - Reaction Time Analytics in Attention Bias Research}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,8 +17,8 @@ knitr::opts_chunk$set(
 library(tidyverse)
 library(REAC)
 
-example1 <- abvyr::example
-example2 <- abvyr::example2
+example1 <- REAC::example
+example2 <- REAC::example2
 
 tidied_data <- shaker(example1, grouping = c("year", "subject"), gather = "trial", value = "RT")
 winsorized_data <- winzer(tidied_data, grouping = c("year", "subject"), x = 0.3, y = 0.7, z = 1.5, label = "trial", value = "RT")
@@ -26,7 +26,7 @@ winsorized_data <- shaker(winsorized_data, grouping = c("year", "subject"), gath
 ```
 ### Package Summary Info
 
-The abvyr package provides tools for 
+The REAC package provides tools for 
 
 * preparing your data for additional calculations related to **ABV-index** (*Attention Bias Variability*) and 
 
@@ -43,9 +43,9 @@ shaker(example,
 ```
 
 
-#### the abvyr() function
+#### the ABV() function
 ```{r eval = FALSE}
-abver(example2, 
+ABV(example2, 
   grouping = c("year", "subject"), 
   trial = "trial", 
   bin_width = 3, 
